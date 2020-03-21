@@ -17,6 +17,7 @@ toolRouter.post('/tools', async (req, res) => {
 
 toolRouter.get('/tools', async (req, res) => {
     try {
+        // console.log('/tools pinged');
         const tools = await Tool.find({});
 
         res.send(tools);
