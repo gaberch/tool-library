@@ -4,6 +4,8 @@ import { Route, Switch, Link, NavLink, BrowserRouter } from 'react-router-dom';
 import Header from '../components/Header';
 import HomePage from '../components/HomePage';
 import Tools from '../components/Tools';
+import NotFoundPage from '../components/NotFoundPage';
+import Tool from '../components/Tool';
 
 
 const AppRouter = () => (
@@ -13,6 +15,8 @@ const AppRouter = () => (
             <Switch>
                 <Route path="/" component={HomePage} exact={true} />
                 <Route path="/browse-tools" component={Tools} exact={true} />
+                <Route path="/browse-tools/id" test="I made it" component={Tool} />
+                <Route component={NotFoundPage} />
         
             </Switch>
         

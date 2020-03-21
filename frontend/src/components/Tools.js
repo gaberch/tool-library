@@ -8,6 +8,10 @@ export default class Tools extends React.Component {
 
     };
 
+    handleCheckinCheckout = () => {
+        return true;
+    }
+
     componentDidMount () {
         const url = 'http://localhost:3000/tools'
         
@@ -28,7 +32,19 @@ export default class Tools extends React.Component {
         return(
             <div>
                 <h1> Browse Available Tools!</h1>
-                
+                {
+                    this.state.tools.map((tool, index) => (
+                        <ToolWidget
+                            key={tool.name}
+                            count={index+1}
+                            toolName={tool.name}
+                            toolDescription={tool.description}
+                            available={tool.available}
+                            handleCheckinCheckout={this.handleCheckinCheckout}
+                        />
+                        
+                    ))
+                }
             </div>);
     
     }

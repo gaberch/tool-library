@@ -1,9 +1,11 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-const ToolWidget = () => (
+
+
+const ToolWidget = (props) => (
     <div>
-        <h1> Welcome to the Tool Library </h1>
-        <p> To browse through all the tools in the library, click the "Browse Tools" button</p>
+    {props.available? <Link to="/browse-tools/">{props.count}. {props.toolName} (Available)</Link>:<Link to="/browse-tools/">{props.count}. {props.toolName} (Checked Out)</Link>}
     </div>
 
 );
