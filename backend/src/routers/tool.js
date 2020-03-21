@@ -53,7 +53,7 @@ toolRouter.patch('/tools/:id', async (req, res) => {
     }
 
     try {
-        const tool = await Tool.findByIdAndUpdate(_id, { runValidators: true, new:true })
+        const tool = await Tool.findByIdAndUpdate(_id,req.body, { runValidators: true, new:true })
 
         if(!tool) {
             return res.status(404).send();
