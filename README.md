@@ -3,9 +3,12 @@
 ## Instructions
 
 Run `npm install` from backend folder
+
 Run `npm install` from frontend folder
+
 In backend folder, in one terminal session run `npm run dev` . 
 The backend server should now be served on localhost:3000
+
 In frontend folder, in a separate terminal session run `npm run dev-server` . 
 The server should now be served on localhost:8080
 
