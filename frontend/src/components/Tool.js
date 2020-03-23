@@ -9,28 +9,49 @@ export default class Tool extends React.Component {
         available: undefined
     };
 
-    // countCheckedOut = () => {
-
-    // }
-
-    handleCheckinCheckout = () => {
-        const data = {
-            available: !this.state.available
+    canCheckOut = async () => {
+        const url = 'http://localhost:3000/tools'
+        const response = await fetch(url);
+        const results = await response.json();
+        console.log(results);
+        let count = 0
+        for (let i = 0; i < results.length; i++) {
+            if (!results[i].available){
+                count++;
+            }
         }
-        const url = 'http://localhost:3000/tools/' + this.props.match.params.id
-        return fetch(url,{
-            method: 'PATCH',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        }).then((response) => {
-            return response.json()
-        }).then((result) => {
-            this.setState(() => ({
-                available: result.available
-            }));
-        }).catch((error) => {
-            console.log(error);
-        });
+        return count <= 2;
+    }
+
+    handleCheckinCheckout = async () => {
+        
+        const checkOut = await this.canCheckOut();
+
+        if (checkOut || !this.state.available){
+            console.log('can check out')
+            const data = { available: !this.state.available }
+            const url = 'http://localhost:3000/tools/' + this.props.match.params.id
+            fetch(url,{
+                method: 'PATCH',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            }).then((response) => {
+                return response.json()
+            }).then((result) => {
+                return this.setState(() => ({
+                    available: result.available
+                }));
+            }).catch((error) => {
+                console.log(error);
+            });
+        } else {
+            alert('Max number of tools have been checked out. Limit is 3.')
+        }
+
+        
+
+
+        
     };
 
     componentDidMount() {

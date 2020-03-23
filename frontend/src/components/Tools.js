@@ -11,9 +11,7 @@ export default class Tools extends React.Component {
     componentDidMount () {
         const url = 'http://localhost:3000/tools'
         
-        fetch(url,{headers: {
-            'Access-Control-Allow-Credentials': 'true'
-        }}).then( (results) => {
+        fetch(url).then( (results) => {
             return results.json();
         }).then((tools) => {
             if (tools.length > 0){
