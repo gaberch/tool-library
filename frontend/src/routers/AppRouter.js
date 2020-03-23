@@ -15,7 +15,10 @@ const AppRouter = () => (
             <Switch>
                 <Route path="/" component={HomePage} exact={true} />
                 <Route path="/browse-tools" component={Tools} exact={true} />
-                <Route path="/browse-tools/id" test="I made it" component={Tool} />
+                <Route 
+                    path="/browse-tools/:id"
+                    component={Tool}
+                />
                 <Route component={NotFoundPage} />
         
             </Switch>
@@ -26,3 +29,5 @@ const AppRouter = () => (
 );
 
 export default AppRouter;
+
+// render={() => <Tool test="I made it" />}

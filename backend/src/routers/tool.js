@@ -28,6 +28,7 @@ toolRouter.get('/tools', async (req, res) => {
 });
 
 toolRouter.get('/tools/:id', async (req, res) => {
+    // console.log('Get endpoint hit')
     const _id = req.params.id;
     
     try {
