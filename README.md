@@ -14,7 +14,7 @@ The server should now be served on localhost:8080
 
 
 ## Current Functionality
-- Website has a home page and a "Browse Tools page. 
+- Website has a home page and a "Browse Tools" page. 
 - Browse Tools has all available tools currently in the data base. They show whether they are currently checked out or not.
 - Each Tool in the database has a name, description and available attritube.
 - Available backend endpoints:
