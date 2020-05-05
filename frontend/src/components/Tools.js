@@ -8,21 +8,15 @@ export default class Tools extends React.Component {
 
     };
 
-    handleCheckinCheckout = () => {
-        return true;
-    }
-
     componentDidMount () {
         const url = 'http://localhost:3000/tools'
         
-        fetch(url,{headers: {
-            'Access-Control-Allow-Credentials': 'true'
-        }}).then( (results) => {
+        fetch(url).then( (results) => {
             return results.json();
         }).then((tools) => {
             if (tools.length > 0){
                 this.setState(() => ({tools}));
-                console.log(this.state.tools);
+                // console.log(this.state.tools);
             }
         }).catch((error) => {
             console.log(error);
@@ -40,7 +34,7 @@ export default class Tools extends React.Component {
                             toolName={tool.name}
                             toolDescription={tool.description}
                             available={tool.available}
-                            handleCheckinCheckout={this.handleCheckinCheckout}
+                            _id={tool._id}
                         />
                         
                     ))
