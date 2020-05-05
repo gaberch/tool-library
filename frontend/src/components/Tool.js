@@ -13,7 +13,7 @@ export default class Tool extends React.Component {
         const url = 'http://localhost:3000/tools'
         const response = await fetch(url);
         const results = await response.json();
-        console.log(results);
+        // console.log(results);
         let count = 0
         for (let i = 0; i < results.length; i++) {
             if (!results[i].available){
@@ -28,7 +28,7 @@ export default class Tool extends React.Component {
         const checkOut = await this.canCheckOut();
 
         if (checkOut || !this.state.available){
-            console.log('can check out')
+            // console.log('can check out')
             const data = { available: !this.state.available }
             const url = 'http://localhost:3000/tools/' + this.props.match.params.id
             fetch(url,{
